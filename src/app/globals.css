@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=General+Sans:wght@700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* IE Global Color System */
+  --ie-blue-600: #2A7FFF;
+  --ie-blue-700: #1E63CC;
+  --ie-cyan-500: #18C8D8;
+  --ie-ink-950: #0A0A0B;
+  --ie-ink-900: #0E0F12;
+  --ie-ink-800: #14161A;
+  --ie-ink-700: #1B1F25;
+  --ie-white: #FFFFFF;
+  --ie-gray-400: #9AA3AF;
+  --ie-gray-300: #C4CBD4;
+  --ie-gray-200: #E3E8EF;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+
+  /* Type scale */
+  --step--1: clamp(12px, 0.75vw, 13px);
+  --step-0: clamp(16px, 1vw, 18px);
+  --step-1: clamp(18px, 1.25vw, 20px);
+  --step-2: clamp(22px, 1.6vw, 24px);
+  --step-3: clamp(26px, 2vw, 30px);
+  --step-4: clamp(32px, 2.6vw, 38px);
+  --step-5: clamp(40px, 3.2vw, 48px);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--ie-ink-950);
+  color: var(--ie-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Glass effect utility */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--ie-blue-600);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ie-ink-900);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ie-gray-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ie-gray-300);
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--ie-blue-600);
+  color: var(--ie-white);
+}
+
+/* Typography utilities */
+.text-display {
+  font-family: 'General Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.text-body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+
+.text-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Animation utilities */
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Grid utilities */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-8 {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 1.25rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .grid-12,
+  .grid-8 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-12,
+  .grid-8,
+  .grid-4 {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+

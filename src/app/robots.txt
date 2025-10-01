@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ie-global.example/sitemap.xml
+
