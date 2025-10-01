@@ -29,6 +29,11 @@ yarn-error.log*
 .env*.local
 .env
 
+# Node.js installation files
+node-v20.11.0-darwin-x64/
+node.pkg
+node.tar.gz
+
 # vercel
 .vercel
 
