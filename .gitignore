@@ -34,6 +34,9 @@ node-v20.11.0-darwin-x64/
 node.pkg
 node.tar.gz
 
+# Large files
+*.zip
+
 # vercel
 .vercel
 
