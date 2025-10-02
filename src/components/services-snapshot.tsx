@@ -1,8 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Smartphone, Shield, Server, Zap, Code, Cloud, Settings } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, Globe, Smartphone, Shield, Server, Zap, Code, Cloud, Settings, ChevronDown, Clock, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -17,7 +18,10 @@ const services = [
     link: '/services/websites',
     color: 'from-brand to-brand-700',
     accentColor: 'text-brand',
-    bgColor: 'bg-brand/10'
+    bgColor: 'bg-brand/10',
+    description: 'High-performance web applications that load in under 1 second and convert 20-40% better than traditional sites.',
+    timeframe: '4-12 weeks',
+    deliverables: ['Custom design system', 'Performance optimization', 'SEO foundation', 'Analytics setup']
   },
   {
     icon: Smartphone,
@@ -27,7 +31,10 @@ const services = [
     link: '/services/apps',
     color: 'from-secondary-coral to-pink-600',
     accentColor: 'text-secondary-coral',
-    bgColor: 'bg-secondary-coral/10'
+    bgColor: 'bg-secondary-coral/10',
+    description: 'Native and cross-platform mobile apps with offline capabilities and seamless user experiences.',
+    timeframe: '8-16 weeks',
+    deliverables: ['App store deployment', 'Push notifications', 'Offline sync', 'Performance monitoring']
   },
   {
     icon: Shield,
@@ -37,7 +44,10 @@ const services = [
     link: '/services/m365',
     color: 'from-secondary-emerald to-green-600',
     accentColor: 'text-secondary-emerald',
-    bgColor: 'bg-secondary-emerald/10'
+    bgColor: 'bg-secondary-emerald/10',
+    description: 'Enterprise-grade device management and security solutions with automated deployment workflows.',
+    timeframe: '2-6 weeks',
+    deliverables: ['Device enrollment', 'Security policies', 'App deployment', 'Compliance reporting']
   },
   {
     icon: Server,
@@ -47,18 +57,30 @@ const services = [
     link: '/services/hosting',
     color: 'from-secondary-amber to-yellow-600',
     accentColor: 'text-secondary-amber',
-    bgColor: 'bg-secondary-amber/10'
+    bgColor: 'bg-secondary-amber/10',
+    description: 'Reliable hosting infrastructure with proactive monitoring and automated scaling capabilities.',
+    timeframe: 'Ongoing',
+    deliverables: ['Infrastructure setup', 'Monitoring dashboard', 'Backup strategy', 'Performance optimization']
   }
 ];
 
 export function ServicesSnapshot() {
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+
   return (
-    <section className="py-20 lg:py-32 bg-bg-900/50">
-      <div className="container mx-auto px-6">
+    <section className="py-20 lg:py-32 bg-bg-900/50 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-brand/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-secondary-coral/5 rounded-full blur-3xl" />
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-step-4 font-display font-bold text-white mb-4">
@@ -77,6 +99,7 @@ export function ServicesSnapshot() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
               <Link href={service.link} className="block h-full">
                 <motion.div
@@ -109,11 +132,64 @@ export function ServicesSnapshot() {
                           </li>
                         ))}
                       </ul>
-                      <div className="flex items-center justify-between pt-2">
-                        <span className={`text-step--1 font-medium ${service.accentColor} group-hover:translate-x-1 transition-transform`}>
-                          See deliverables
-                        </span>
-                        <ArrowRight className={`w-4 h-4 ${service.accentColor} group-hover:translate-x-1 transition-transform`} />
+                      {/* Expandable Panel */}
+                      <div className="pt-2">
+                        <button
+                          onClick={() => setExpandedCard(expandedCard === index ? null : index)}
+                          className="flex items-center justify-between w-full text-left"
+                        >
+                          <span className={`text-step--1 font-medium ${service.accentColor} group-hover:translate-x-1 transition-transform`}>
+                            {expandedCard === index ? 'Hide details' : 'See deliverables'}
+                          </span>
+                          <motion.div
+                            animate={{ rotate: expandedCard === index ? 180 : 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <ChevronDown className={`w-4 h-4 ${service.accentColor}`} />
+                          </motion.div>
+                        </button>
+                        
+                        <AnimatePresence>
+                          {expandedCard === index && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="mt-4 space-y-4 pt-4 border-t border-gray-700/50">
+                                <p className="text-step--1 text-gray-300 leading-relaxed">
+                                  {service.description}
+                                </p>
+                                
+                                <div className="flex items-center space-x-2 text-step--1 text-gray-400">
+                                  <Clock className="w-4 h-4" />
+                                  <span>Timeline: {service.timeframe}</span>
+                                </div>
+                                
+                                <div>
+                                  <h4 className="text-step--1 font-medium text-white mb-2">Key Deliverables:</h4>
+                                  <ul className="space-y-1">
+                                    {service.deliverables.map((deliverable, deliverableIndex) => (
+                                      <li key={deliverableIndex} className="flex items-center space-x-2 text-step--1 text-gray-400">
+                                        <CheckCircle className="w-3 h-3 text-status-success" />
+                                        <span>{deliverable}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                
+                                <Link href={service.link}>
+                                  <Button variant="primary" size="sm" className="w-full group">
+                                    View full service
+                                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                  </Button>
+                                </Link>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     </CardContent>
                   </Card>
