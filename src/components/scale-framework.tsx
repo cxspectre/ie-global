@@ -223,7 +223,7 @@ export function ScaleFramework() {
                     <div className="lg:col-span-1">
                       <div className="flex items-center space-x-4 mb-6">
                         <div className={`w-12 h-12 rounded-lg bg-gradient-to-r ${scaleSteps[activeStep].color} flex items-center justify-center`}>
-                          <scaleSteps[activeStep].icon className="w-6 h-6 text-white" />
+                          {React.createElement(scaleSteps[activeStep].icon, { className: "w-6 h-6 text-white" })}
                         </div>
                         <div>
                           <h3 className="text-step-3 font-bold text-white">
