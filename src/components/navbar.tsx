@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 
 const navigation = [
@@ -70,9 +71,12 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Button variant="primary" size="sm">
-              Start a project
-            </Button>
+            <div className="flex items-center space-x-3">
+              <ThemeToggle />
+              <Button variant="primary" size="sm">
+                Start a project
+              </Button>
+            </div>
           </div>
 
           {/* Mobile menu button */}

@@ -49,16 +49,28 @@ export function Hero() {
 
             {/* Headline */}
             <div className="space-y-4">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="text-step-5 font-display font-bold text-white leading-display"
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-step-5 font-display font-bold text-white leading-tight tracking-tight"
+            >
+              Custom websites that{' '}
+              <motion.span 
+                className="text-brand relative"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
               >
-                Custom websites that{' '}
-                <span className="text-brand">load in &lt;1s</span>{' '}
-                and convert 20–40% better
-              </motion.h1>
+                load in &lt;1s
+                <motion.div
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-accent"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 1.2 }}
+                />
+              </motion.span>{' '}
+              and convert 20–40% better
+            </motion.h1>
               
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -78,13 +90,42 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button variant="primary" size="lg" className="group">
-                Start a project
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="ghost" size="lg">
-                See our work
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Button variant="primary" size="lg" className="group relative overflow-hidden">
+                  <motion.span
+                    className="relative z-10 flex items-center"
+                    initial={{ opacity: 1 }}
+                    whileHover={{ opacity: 0.9 }}
+                  >
+                    Start a project
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </motion.span>
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-brand to-brand-accent opacity-0 group-hover:opacity-100"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "0%" }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Button variant="ghost" size="lg" className="group">
+                  See our work
+                  <motion.div
+                    className="ml-2 w-4 h-4 border-2 border-current rounded-full"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  />
+                </Button>
+              </motion.div>
             </motion.div>
 
             {/* Trust chips */}

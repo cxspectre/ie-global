@@ -6,22 +6,60 @@
 @tailwind utilities;
 
 :root {
-  /* IE Global Color System */
+  /* IE Global Color System - Enhanced for 2025 */
   --ie-blue-600: #2A7FFF;
   --ie-blue-700: #1E63CC;
+  --ie-blue-500: #2563EB;
   --ie-cyan-500: #18C8D8;
+  --ie-blue-light: #60A5FA;
+  
+  /* Secondary Palette - Nature-inspired */
+  --ie-amber: #F59E0B;
+  --ie-coral: #FF6B6B;
+  --ie-emerald: #10B981;
+  --ie-violet: #8B5CF6;
+  
+  /* Dark Mode Colors */
   --ie-ink-950: #0A0A0B;
   --ie-ink-900: #0E0F12;
   --ie-ink-800: #14161A;
   --ie-ink-700: #1B1F25;
+  --ie-ink-600: #2A2D35;
   --ie-white: #FFFFFF;
   --ie-gray-400: #9AA3AF;
   --ie-gray-300: #C4CBD4;
   --ie-gray-200: #E3E8EF;
+  --ie-gray-500: #64748B;
+  --ie-gray-600: #475569;
+  --ie-gray-700: #334155;
+  --ie-gray-800: #1E293B;
+  --ie-gray-900: #0F172A;
+  
   --success: #10B981;
   --warning: #F59E0B;
   --error: #EF4444;
+  --info: #3B82F6;
+}
 
+/* Light Mode Variables */
+:root:not(.dark) {
+  --ie-ink-950: #FFFFFF;
+  --ie-ink-900: #F8FAFC;
+  --ie-ink-800: #F1F5F9;
+  --ie-ink-700: #E2E8F0;
+  --ie-ink-600: #CBD5E1;
+  --ie-white: #0F172A;
+  --ie-gray-400: #64748B;
+  --ie-gray-300: #334155;
+  --ie-gray-200: #0F172A;
+  --ie-gray-500: #94A3B8;
+  --ie-gray-600: #CBD5E1;
+  --ie-gray-700: #E2E8F0;
+  --ie-gray-800: #F1F5F9;
+  --ie-gray-900: #F8FAFC;
+}
+
+:root {
   /* Type scale */
   --step--1: clamp(12px, 0.75vw, 13px);
   --step-0: clamp(16px, 1vw, 18px);
@@ -49,14 +87,21 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Glass effect utility */
+/* Glass effect utility - Enhanced for both themes */
 .glass {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+:root:not(.dark) .glass {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 /* Focus styles for accessibility */
