@@ -2,6 +2,8 @@ import { MetadataRoute } from 'next';
 import { getAllServices } from '@/lib/data/services';
 import { getAllCaseStudies } from '@/lib/data/case-studies';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://ie-global.example';
   
