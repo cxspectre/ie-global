@@ -17,7 +17,7 @@ export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Dynamic background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-bg-950 via-bg-900 to-brand/5 dark:from-bg-950 dark:via-bg-900 dark:to-brand/5 light:from-light-50 light:via-light-100 light:to-brand/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-bg-950 via-bg-900 to-brand/5" />
       
       {/* Animated AI-themed background elements */}
       <div className="absolute inset-0">
@@ -67,7 +67,7 @@ export function Hero() {
               className="inline-flex items-center space-x-2 bg-brand/10 border border-brand/20 rounded-full px-4 py-2"
             >
               <Sparkles className="w-4 h-4 text-brand" />
-              <span className="text-step--1 font-medium text-brand">
+              <span className="text-sm font-medium text-brand">
                 AI-driven digital agency
               </span>
             </motion.div>
@@ -78,7 +78,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-step-5 font-display font-bold text-white leading-tight tracking-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white leading-tight tracking-tight"
             >
               Custom websites that{' '}
               <motion.span 
@@ -101,7 +101,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-step-1 text-gray-300 max-w-2xl leading-body"
+                className="text-lg text-gray-300 max-w-2xl leading-relaxed"
               >
                 We ship high-performance web apps, iOS, and M365 systems that move KPIs. 
                 Edge-rendered. Secure. Accessible.
@@ -161,9 +161,9 @@ export function Hero() {
               className="flex flex-wrap gap-4 pt-8"
             >
               {['Edge-rendered', '99.9% uptime', 'WCAG AA', 'Sub-second LCP'].map((prop, index) => (
-                <div key={prop} className="flex items-center space-x-2 bg-bg-800/50 border border-gray-400/20 rounded-full px-3 py-1">
+                <div key={prop} className="flex items-center space-x-2 bg-gray-800/50 border border-gray-400/20 rounded-full px-3 py-1">
                   <div className="w-2 h-2 bg-brand rounded-full" />
-                  <span className="text-step--1 text-gray-300">{prop}</span>
+                  <span className="text-sm text-gray-300">{prop}</span>
                 </div>
               ))}
             </motion.div>
@@ -255,14 +255,14 @@ export function Hero() {
                   
                   {/* Floating Code Elements */}
                   <motion.div
-                    className="absolute top-2 left-2 text-step--1 font-mono text-gray-400"
+                    className="absolute top-2 left-2 text-sm font-mono text-gray-400"
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
                     &lt;AI&gt;
                   </motion.div>
                   <motion.div
-                    className="absolute bottom-2 right-2 text-step--1 font-mono text-gray-400"
+                    className="absolute bottom-2 right-2 text-sm font-mono text-gray-400"
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, delay: 1, repeat: Infinity }}
                   >
@@ -277,7 +277,7 @@ export function Hero() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                 className="absolute -top-4 -right-4 glass rounded-full px-3 py-1"
               >
-                <span className="text-step--1 font-medium text-brand">+40% conversion</span>
+                <span className="text-sm font-medium text-brand">+40% conversion</span>
               </motion.div>
               
               <motion.div
@@ -285,7 +285,7 @@ export function Hero() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
                 className="absolute -bottom-4 -left-4 glass rounded-full px-3 py-1"
               >
-                <span className="text-step--1 font-medium text-brand-accent">&lt;1s load time</span>
+                <span className="text-sm font-medium text-brand-accent">&lt;1s load time</span>
               </motion.div>
             </div>
           </motion.div>

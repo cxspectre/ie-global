@@ -57,13 +57,6 @@
   --ie-gray-700: #E2E8F0;
   --ie-gray-800: #F1F5F9;
   --ie-gray-900: #F8FAFC;
-  
-  /* Light mode specific adjustments */
-  --ie-blue-600: #1D4ED8;
-  --ie-blue-700: #1E40AF;
-  --ie-blue-500: #3B82F6;
-  --ie-cyan-500: #0891B2;
-  --ie-blue-light: #3B82F6;
 }
 
 :root {
