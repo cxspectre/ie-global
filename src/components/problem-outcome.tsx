@@ -45,17 +45,27 @@ const outcomes = [
 
 export function ProblemOutcome() {
   return (
-    <section className="py-20 lg:py-32">
-      <div className="container mx-auto px-6">
+    <section className="py-20 lg:py-32 bg-gradient-to-br from-bg-900/30 via-bg-800/20 to-secondary-violet/5 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-brand/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-secondary-coral/5 rounded-full blur-3xl" />
+      </div>
+      
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
           <h2 className="text-step-4 font-display font-bold text-white mb-4">
             Ship faster. Rank higher. Convert more.
           </h2>
+          <p className="text-step-1 text-gray-300 max-w-2xl mx-auto">
+            We solve the performance bottlenecks that hold your business back
+          </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">

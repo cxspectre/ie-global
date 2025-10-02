@@ -18,7 +18,10 @@ const featuredCases = [
     link: '/work/techcorp-ecommerce',
     metric: '+31%',
     metricLabel: 'signup rate',
-    timeframe: '6 weeks'
+    timeframe: '6 weeks',
+    problem: 'Slow checkout process causing 40% cart abandonment',
+    color: 'from-brand to-brand-700',
+    accentColor: 'text-brand'
   },
   {
     client: 'MedConnect',
@@ -29,7 +32,10 @@ const featuredCases = [
     link: '/work/healthcare-app',
     metric: '+70%',
     metricLabel: 'patient engagement',
-    timeframe: '3 months'
+    timeframe: '3 months',
+    problem: 'Poor Core Web Vitals affecting patient portal usage',
+    color: 'from-secondary-emerald to-green-600',
+    accentColor: 'text-secondary-emerald'
   }
 ];
 
@@ -59,35 +65,49 @@ export function FeaturedWork() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              <Card variant="glass" interactive className="h-full">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center space-x-2 text-step--1 text-brand">
-                      <span>{caseStudy.client}</span>
-                      <span>•</span>
-                      <span>{caseStudy.sector}</span>
-                      <span>•</span>
-                      <span>{caseStudy.year}</span>
+              <motion.div
+                whileHover={{ y: -4, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Card variant="glass" className="h-full cursor-pointer group hover:border-brand/40 transition-all duration-300">
+                  <CardHeader>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-2 text-step--1 text-gray-400">
+                        <span>{caseStudy.client}</span>
+                        <span>•</span>
+                        <span>{caseStudy.sector}</span>
+                        <span>•</span>
+                        <span>{caseStudy.year}</span>
+                      </div>
+                      <div className="flex items-center space-x-1 text-status-success">
+                        <TrendingUp className="w-4 h-4" />
+                        <span className="text-step--1 font-medium">Before/After + {caseStudy.timeframe}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center space-x-1 text-status-success">
-                      <TrendingUp className="w-4 h-4" />
-                      <span className="text-step--1 font-medium">Before/After + {caseStudy.timeframe}</span>
+                    
+                    {/* Problem Statement */}
+                    <div className="mb-4 p-3 rounded-lg bg-bg-800/50 border-l-4 border-status-error/30">
+                      <p className="text-step--1 text-gray-300 italic">
+                        "Problem: {caseStudy.problem}"
+                      </p>
                     </div>
-                  </div>
-                  
-                  <div className="text-center mb-6">
-                    <div className="text-step-4 font-bold text-brand mb-2">
-                      {caseStudy.metric}
+                    
+                    <div className="text-center mb-6">
+                      <motion.div 
+                        className={`text-step-4 font-bold ${caseStudy.accentColor} mb-2`}
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {caseStudy.metric}
+                      </motion.div>
+                      <div className="text-step-1 font-medium text-white">
+                        {caseStudy.metricLabel}
+                      </div>
                     </div>
-                    <div className="text-step-1 font-medium text-white">
-                      {caseStudy.metricLabel}
-                    </div>
-                  </div>
 
-                  <CardTitle className="text-step-2 text-center mb-4">
-                    {caseStudy.headline}
-                  </CardTitle>
-                </CardHeader>
+                    <CardTitle className="text-step-2 text-center mb-4 group-hover:text-brand transition-colors">
+                      {caseStudy.headline}
+                    </CardTitle>
+                  </CardHeader>
                 
                 <CardContent className="space-y-6">
                   <div>

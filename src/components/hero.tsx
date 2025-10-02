@@ -16,13 +16,38 @@ const badges = [
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-bg-950 via-bg-900 to-brand/5" />
+      {/* Dynamic background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-bg-950 via-bg-900 to-brand/5 dark:from-bg-950 dark:via-bg-900 dark:to-brand/5 light:from-light-50 light:via-light-100 light:to-brand/20" />
       
-      {/* Animated background elements */}
+      {/* Animated AI-themed background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brand-accent/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <motion.div 
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-brand/20 to-brand-accent/20 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-brand-accent/20 to-secondary-violet/20 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            opacity: [0.6, 0.3, 0.6],
+            rotate: [360, 180, 0]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-secondary-coral/10 to-secondary-amber/10 rounded-full blur-2xl"
+          animate={{ 
+            x: [0, 100, -100, 0],
+            y: [0, -50, 50, 0],
+            scale: [1, 1.1, 0.9, 1]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -144,31 +169,105 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Visual */}
+          {/* Custom AI-themed Visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
             className="relative"
           >
-            {/* Device mockup placeholder */}
+            {/* AI Neural Network Visualization */}
             <div className="relative mx-auto w-full max-w-md">
-              <div className="glass rounded-3xl p-8 space-y-6">
-                {/* Browser mockup */}
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-status-error rounded-full" />
-                    <div className="w-3 h-3 bg-status-warning rounded-full" />
-                    <div className="w-3 h-3 bg-status-success rounded-full" />
-                  </div>
-                  <div className="h-32 bg-gradient-to-br from-brand to-brand-accent rounded-lg" />
-                </div>
-                
-                {/* Content blocks */}
-                <div className="space-y-3">
-                  <div className="h-4 bg-gray-400 rounded w-3/4" />
-                  <div className="h-4 bg-gray-400 rounded w-1/2" />
-                  <div className="h-4 bg-gray-400 rounded w-5/6" />
+              <div className="glass rounded-3xl p-8 space-y-6 relative overflow-hidden">
+                {/* AI Neural Network Nodes */}
+                <div className="relative h-64">
+                  <motion.div
+                    className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-r from-brand to-brand-accent rounded-full flex items-center justify-center"
+                    animate={{ 
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 5, -5, 0]
+                    }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
+                      <div className="w-3 h-3 bg-brand rounded-full" />
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div
+                    className="absolute top-8 right-6 w-8 h-8 bg-gradient-to-r from-secondary-coral to-secondary-amber rounded-full"
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      opacity: [0.7, 1, 0.7]
+                    }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  <motion.div
+                    className="absolute bottom-16 left-6 w-6 h-6 bg-gradient-to-r from-secondary-emerald to-brand-accent rounded-full"
+                    animate={{ 
+                      scale: [1, 0.8, 1],
+                      rotate: [0, 180, 360]
+                    }}
+                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  <motion.div
+                    className="absolute bottom-4 right-4 w-10 h-10 bg-gradient-to-r from-secondary-violet to-brand rounded-full"
+                    animate={{ 
+                      scale: [1, 1.3, 1],
+                      opacity: [0.8, 1, 0.8]
+                    }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Connecting Lines */}
+                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 300 200">
+                    <motion.path
+                      d="M 40 40 Q 150 100 260 80"
+                      stroke="url(#gradient1)"
+                      strokeWidth="2"
+                      fill="none"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 2, delay: 1 }}
+                    />
+                    <motion.path
+                      d="M 50 140 Q 150 80 250 120"
+                      stroke="url(#gradient2)"
+                      strokeWidth="2"
+                      fill="none"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 2.5, delay: 1.5 }}
+                    />
+                    <defs>
+                      <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#2A7FFF" />
+                        <stop offset="100%" stopColor="#18C8D8" />
+                      </linearGradient>
+                      <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#FF6B6B" />
+                        <stop offset="100%" stopColor="#8B5CF6" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  
+                  {/* Floating Code Elements */}
+                  <motion.div
+                    className="absolute top-2 left-2 text-step--1 font-mono text-gray-400"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    &lt;AI&gt;
+                  </motion.div>
+                  <motion.div
+                    className="absolute bottom-2 right-2 text-step--1 font-mono text-gray-400"
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 2, delay: 1, repeat: Infinity }}
+                  >
+                    /&gt;
+                  </motion.div>
                 </div>
               </div>
               
