@@ -11,28 +11,38 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: {
-          DEFAULT: '#0A0A0B',
-          900: '#0E0F12',
-          800: '#14161A',
-          700: '#1B1F25',
-        },
+        // IE Global Brand Colors
+        // Primary brand color - used for CTAs, links, and key UI elements
         brand: {
-          DEFAULT: '#2A7FFF',
-          700: '#1E63CC',
-          accent: '#18C8D8',
+          DEFAULT: '#2A7FFF', // IE Blue - primary brand color
+          700: '#1E63CC',     // Darker blue for hover states
+          accent: '#18C8D8',  // Cyan accent for highlights and secondary actions
         },
+        
+        // Background Colors - Dark-first design system
+        bg: {
+          DEFAULT: '#0A0A0B', // Primary background - deepest dark
+          900: '#0E0F12',     // Elevated surfaces - cards, modals
+          800: '#14161A',     // Secondary surfaces - form inputs
+          700: '#1B1F25',     // Tertiary surfaces - borders, dividers
+        },
+        
+        // Neutral Colors - Text and UI chrome
         gray: {
-          200: '#E3E8EF',
-          300: '#C4CBD4',
-          400: '#9AA3AF',
+          200: '#E3E8EF',     // Lightest text - headings, important content
+          300: '#C4CBD4',     // Secondary text - body content
+          400: '#9AA3AF',     // Tertiary text - captions, placeholders
         },
+        
+        // Semantic Colors - Status indicators and feedback
         status: {
-          success: '#10B981',
-          warning: '#F59E0B',
-          error: '#EF4444',
+          success: '#10B981', // Success states - confirmations, positive metrics
+          warning: '#F59E0B', // Warning states - cautions, pending states
+          error: '#EF4444',   // Error states - failures, critical issues
         },
-        foreground: '#FFFFFF',
+        
+        // Text Colors
+        foreground: '#FFFFFF', // Primary text color - high contrast white
       },
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],

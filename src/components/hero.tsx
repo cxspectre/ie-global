@@ -66,8 +66,8 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-step-1 text-gray-300 max-w-2xl leading-body"
               >
-                We build high-performance web applications, mobile apps, and M365 solutions 
-                that drive real business results. Edge-rendered, ADA compliant, and built to scale.
+                We ship high-performance web apps, iOS, and M365 systems that move KPIs. 
+                Edge-rendered. Secure. Accessible.
               </motion.p>
             </div>
 
@@ -87,17 +87,17 @@ export function Hero() {
               </Button>
             </motion.div>
 
-            {/* Value props */}
+            {/* Trust chips */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="grid grid-cols-2 gap-4 pt-8"
+              className="flex flex-wrap gap-4 pt-8"
             >
-              {['Edge-rendered', '99.9% uptime', 'ADA/WCAG AA', 'Sub-second LCP'].map((prop, index) => (
-                <div key={prop} className="flex items-center space-x-2">
+              {['Edge-rendered', '99.9% uptime', 'WCAG AA', 'Sub-second LCP'].map((prop, index) => (
+                <div key={prop} className="flex items-center space-x-2 bg-bg-800/50 border border-gray-400/20 rounded-full px-3 py-1">
                   <div className="w-2 h-2 bg-brand rounded-full" />
-                  <span className="text-step--1 text-gray-400">{prop}</span>
+                  <span className="text-step--1 text-gray-300">{prop}</span>
                 </div>
               ))}
             </motion.div>
