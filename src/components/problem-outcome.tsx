@@ -46,10 +46,12 @@ const outcomes = [
 export function ProblemOutcome() {
   return (
     <section className="py-20 lg:py-32 bg-gradient-to-br from-bg-900/30 via-bg-800/20 to-secondary-violet/5 relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-brand/5 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-48 h-48 bg-secondary-coral/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-secondary-emerald/5 rounded-full blur-2xl" />
+        <div className="absolute bottom-1/3 right-1/3 w-40 h-40 bg-secondary-amber/5 rounded-full blur-2xl" />
       </div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -81,30 +83,31 @@ export function ProblemOutcome() {
             </h3>
             <div className="space-y-6">
               {problems.map((problem, index) => (
-                <motion.div
-                  key={problem.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                >
-                  <Card variant="glass" className="border-status-error/20">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-10 h-10 bg-status-error/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <problem.icon className="w-5 h-5 text-status-error" />
-                        </div>
-                        <div>
-                          <h4 className="text-step-1 font-medium text-white mb-2">
-                            {problem.title}
-                          </h4>
-                          <p className="text-step-0 text-gray-400">
-                            {problem.description}
-                          </p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                    <motion.div
+                      key={problem.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                      whileHover={{ y: -4, scale: 1.02 }}
+                    >
+                      <Card variant="glass" className="border-status-error/20 hover:border-status-error/40 transition-all duration-300 group">
+                        <CardContent className="p-6">
+                          <div className="flex items-start space-x-4">
+                            <div className="w-12 h-12 bg-gradient-to-r from-status-error/20 to-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                              <problem.icon className="w-6 h-6 text-status-error" />
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-step-1 font-semibold text-white mb-2 group-hover:text-status-error transition-colors">
+                                {problem.title}
+                              </h4>
+                              <p className="text-step-0 text-gray-400 leading-relaxed">
+                                {problem.description}
+                              </p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
               ))}
             </div>
           </motion.div>
@@ -121,48 +124,60 @@ export function ProblemOutcome() {
             </h3>
             <div className="space-y-6">
               {outcomes.map((outcome, index) => (
-                <motion.div
-                  key={outcome.metric}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                >
-                  <Card variant="glass" className="border-status-success/20">
-                    <CardContent className="p-6">
-                      <div className="text-center">
-                        <div className="text-step-4 font-bold text-status-success mb-1">
-                          {outcome.metric}
-                        </div>
-                        <div className="text-step-1 font-medium text-white mb-2">
-                          {outcome.context}
-                        </div>
-                        <p className="text-step-0 text-gray-400">
-                          {outcome.description}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                    <motion.div
+                      key={outcome.metric}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+                      whileHover={{ y: -4, scale: 1.02 }}
+                    >
+                      <Card variant="glass" className="border-status-success/20 hover:border-status-success/40 transition-all duration-300 group">
+                        <CardContent className="p-6">
+                          <div className="text-center">
+                            <div className="relative mb-4">
+                              <div className="text-step-4 font-bold text-status-success mb-1 group-hover:scale-110 transition-transform duration-300">
+                                {outcome.metric}
+                              </div>
+                              <div className="absolute -top-2 -right-2 w-4 h-4 bg-status-success/20 rounded-full animate-pulse" />
+                            </div>
+                            <div className="text-step-1 font-semibold text-white mb-3">
+                              {outcome.context}
+                            </div>
+                            <p className="text-step-0 text-gray-400 leading-relaxed">
+                              {outcome.description}
+                            </p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
               ))}
             </div>
           </motion.div>
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <Button variant="primary" size="lg" className="group">
-            Audit my site
-            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <p className="text-step--1 text-gray-400 mt-3">
-            Get a 5-page report on speed, SEO, and UX. Free, no fluff.
-          </p>
-        </motion.div>
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-center mt-12"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="primary" size="lg" className="group relative overflow-hidden">
+                  <span className="relative z-10 flex items-center">
+                    Audit my site
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-brand to-brand-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Button>
+              </motion.div>
+              <p className="text-step--1 text-gray-400 mt-3">
+                Get a 5-page report on speed, SEO, and UX. Free, no fluff.
+              </p>
+            </motion.div>
       </div>
     </section>
   );

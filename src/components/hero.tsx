@@ -16,10 +16,11 @@ const badges = [
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Dynamic background gradient */}
+      {/* Multi-layered background with depth */}
       <div className="absolute inset-0 bg-gradient-to-br from-bg-950 via-bg-900 to-brand/5" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-bg-900/20 to-secondary-violet/10" />
       
-      {/* Animated AI-themed background elements */}
+      {/* Floating geometric shapes for depth */}
       <div className="absolute inset-0">
         <motion.div 
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-brand/20 to-brand-accent/20 rounded-full blur-3xl"
@@ -48,6 +49,24 @@ export function Hero() {
           }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
+        
+        {/* Additional floating elements for more depth */}
+        <motion.div 
+          className="absolute top-1/3 right-1/3 w-32 h-32 bg-gradient-to-r from-secondary-emerald/15 to-brand-accent/15 rounded-full blur-2xl"
+          animate={{ 
+            y: [0, -30, 30, 0],
+            rotate: [0, 90, 180, 270, 360]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-gradient-to-r from-secondary-amber/10 to-secondary-coral/10 rounded-full blur-2xl"
+          animate={{ 
+            x: [0, 50, -50, 0],
+            scale: [1, 1.2, 0.8, 1]
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -57,14 +76,16 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="space-y-8"
+            className="space-y-8 relative"
           >
+            {/* Subtle glass background for content */}
+            <div className="absolute inset-0 bg-gradient-to-r from-bg-900/20 via-transparent to-bg-800/10 rounded-3xl blur-xl -z-10" />
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center space-x-2 bg-brand/10 border border-brand/20 rounded-full px-4 py-2"
+              className="inline-flex items-center space-x-2 glass border-brand/30 rounded-full px-4 py-2 backdrop-blur-sm"
             >
               <Sparkles className="w-4 h-4 text-brand" />
               <span className="text-sm font-medium text-brand">
@@ -161,10 +182,17 @@ export function Hero() {
               className="flex flex-wrap gap-4 pt-8"
             >
               {['Edge-rendered', '99.9% uptime', 'WCAG AA', 'Sub-second LCP'].map((prop, index) => (
-                <div key={prop} className="flex items-center space-x-2 bg-gray-800/50 border border-gray-400/20 rounded-full px-3 py-1">
-                  <div className="w-2 h-2 bg-brand rounded-full" />
-                  <span className="text-sm text-gray-300">{prop}</span>
-                </div>
+                <motion.div 
+                  key={prop} 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="flex items-center space-x-2 glass border-gray-400/30 rounded-full px-4 py-2 backdrop-blur-sm hover:border-brand/40 transition-all duration-300"
+                >
+                  <div className="w-2 h-2 bg-brand rounded-full animate-pulse" />
+                  <span className="text-sm text-gray-300 font-medium">{prop}</span>
+                </motion.div>
               ))}
             </motion.div>
           </motion.div>
