@@ -2,6 +2,8 @@
 
 A modern, high-performance website built with Next.js 15, React Server Components, and Tailwind CSS.
 
+🌐 **Live Site**: [https://cxspectre.github.io/ie-global/](https://cxspectre.github.io/ie-global/)
+
 ## Features
 
 - ⚡ **Performance First**: Sub-second load times with edge rendering
