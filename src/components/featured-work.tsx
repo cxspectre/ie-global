@@ -134,6 +134,7 @@ export function FeaturedWork() {
                   </Link>
                 </CardContent>
               </Card>
+              </motion.div>
             </motion.div>
           ))}
         </div>
