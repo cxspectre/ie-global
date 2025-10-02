@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://ie-global.example'),
+  metadataBase: new URL('https://cxspectre.github.io/ie-global'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://ie-global.example',
+    url: 'https://cxspectre.github.io/ie-global',
     title: 'IE Global - AI-driven Digital Agency',
     description: 'Custom websites that load in <1s and convert 20–40% better. We build high-performance web applications, mobile apps, and M365 solutions.',
     siteName: 'IE Global',
@@ -89,8 +89,8 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'IE Global',
-              url: 'https://ie-global.example',
-              logo: 'https://ie-global.example/logo.png',
+              url: 'https://cxspectre.github.io/ie-global',
+              logo: 'https://cxspectre.github.io/ie-global/logo.png',
               description: 'AI-driven digital agency delivering custom web, app, and M365 solutions',
               address: {
                 '@type': 'PostalAddress',
@@ -100,7 +100,7 @@ export default function RootLayout({
                 '@type': 'ContactPoint',
                 telephone: '+1-XXX-XXX-XXXX',
                 contactType: 'sales',
-                email: 'sales@ie-global.example',
+                email: 'sales@cxspectre.github.io/ie-global',
               },
               sameAs: [
                 'https://www.linkedin.com/company/ie-global',

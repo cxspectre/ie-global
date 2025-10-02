@@ -4,8 +4,8 @@ const isProd = process.env.NODE_ENV === 'production';
 const nextConfig = {
   output: 'export',
   trailingSlash: true,
-  basePath: '',
-  assetPrefix: '',
+  basePath: '/ie-global',
+  assetPrefix: '/ie-global/',
   images: {
     unoptimized: true,
   },

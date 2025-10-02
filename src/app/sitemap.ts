@@ -5,7 +5,7 @@ import { getAllCaseStudies } from '@/lib/data/case-studies';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://ie-global.example';
+  const baseUrl = 'https://cxspectre.github.io/ie-global';
   
   // Static pages
   const staticPages = [

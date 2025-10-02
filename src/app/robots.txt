@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ie-global.example/sitemap.xml
+Sitemap: https://cxspectre.github.io/ie-global/sitemap.xml
 
