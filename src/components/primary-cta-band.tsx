@@ -58,7 +58,7 @@ export function PrimaryCTABand() {
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      // Simulate form submission
+      // Simulate form submission for static export
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       setSubmitStatus({ 
