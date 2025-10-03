@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Globe, Smartphone, Shield, Server, Zap, Code, Cloud, Settings, ChevronDown, Clock, CheckCircle } from 'lucide-react';
+import { ArrowRight, Globe, Smartphone, Shield, Server, Zap, Code, Cloud, Settings, ChevronDown, Clock, CheckCircle, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
