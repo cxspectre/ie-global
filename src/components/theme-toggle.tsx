@@ -27,21 +27,55 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative inline-flex items-center justify-center w-10 h-10 rounded-lg bg-bg-800 hover:bg-bg-700 border border-gray-400/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-bg-950"
+      className="relative inline-flex items-center justify-center w-10 h-10 rounded-lg glass hover:glass-strong border border-gray-400/20 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-bg-950 group"
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
       <motion.div
         initial={false}
-        animate={{ rotate: isDark ? 0 : 180 }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        animate={{ 
+          rotate: isDark ? 0 : 180,
+          scale: [1, 1.1, 1]
+        }}
+        transition={{ 
+          rotate: { duration: 0.3, ease: 'easeInOut' },
+          scale: { duration: 0.2, ease: 'easeInOut' }
+        }}
         className="relative w-5 h-5"
       >
-        {isDark ? (
-          <Sun className="w-5 h-5 text-secondary-amber" />
-        ) : (
-          <Moon className="w-5 h-5 text-brand-light" />
-        )}
+        <motion.div
+          initial={false}
+          animate={{ 
+            opacity: isDark ? 1 : 0,
+            scale: isDark ? 1 : 0.8
+          }}
+          transition={{ duration: 0.2 }}
+          className="absolute inset-0"
+        >
+          <Sun className="w-5 h-5 text-secondary-amber group-hover:text-secondary-amber/80 transition-colors" />
+        </motion.div>
+        <motion.div
+          initial={false}
+          animate={{ 
+            opacity: isDark ? 0 : 1,
+            scale: isDark ? 0.8 : 1
+          }}
+          transition={{ duration: 0.2 }}
+          className="absolute inset-0"
+        >
+          <Moon className="w-5 h-5 text-brand-light group-hover:text-brand-light/80 transition-colors" />
+        </motion.div>
       </motion.div>
+      
+      {/* Subtle glow effect */}
+      <motion.div
+        initial={false}
+        animate={{ 
+          opacity: isDark ? 0.3 : 0.1,
+          scale: isDark ? 1.2 : 0.8
+        }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 rounded-lg bg-gradient-to-r from-secondary-amber/20 to-brand-light/20 blur-sm -z-10"
+      />
     </button>
   );
 }

@@ -11,17 +11,29 @@ const problems = [
   {
     icon: Clock,
     title: 'Slow pages bleed revenue',
-    description: 'Every second of load time costs you customers and conversions'
+    description: 'Every second of load time costs you customers and conversions',
+    color: 'from-status-error to-red-600',
+    accentColor: 'text-status-error',
+    bgColor: 'bg-status-error/10',
+    example: 'TechCorp lost 40% of checkout traffic due to 5s load times'
   },
   {
     icon: Search,
     title: 'SEO stuck below page one',
-    description: 'Poor Core Web Vitals keep you invisible to search engines'
+    description: 'Poor Core Web Vitals keep you invisible to search engines',
+    color: 'from-status-warning to-yellow-600',
+    accentColor: 'text-status-warning',
+    bgColor: 'bg-status-warning/10',
+    example: 'MedConnect ranked #47 for "patient portal" despite great content'
   },
   {
     icon: Zap,
     title: 'Ops glued together with manual work',
-    description: 'Manual processes slow down releases and increase errors'
+    description: 'Manual processes slow down releases and increase errors',
+    color: 'from-status-info to-blue-600',
+    accentColor: 'text-status-info',
+    bgColor: 'bg-status-info/10',
+    example: 'Manual deployments caused 3-hour delays and 15% error rate'
   }
 ];
 
@@ -29,17 +41,32 @@ const outcomes = [
   {
     metric: 'LCP < 2.0s',
     context: 'on 4G',
-    description: 'Lightning-fast load times that keep users engaged'
+    description: 'Lightning-fast load times that keep users engaged',
+    color: 'from-status-success to-green-600',
+    accentColor: 'text-status-success',
+    bgColor: 'bg-status-success/10',
+    successStory: 'For TechCorp we cut checkout LCP from 5s to 1.2s and boosted signups +31%',
+    progress: 85
   },
   {
     metric: '+20–40%',
     context: 'conversion lift',
-    description: 'Measurable improvements in user engagement and sales'
+    description: 'Measurable improvements in user engagement and sales',
+    color: 'from-brand to-brand-accent',
+    accentColor: 'text-brand',
+    bgColor: 'bg-brand/10',
+    successStory: 'MedConnect saw +70% patient engagement after optimizing their portal UX',
+    progress: 92
   },
   {
     metric: '–50%',
     context: 'ops time per release',
-    description: 'Automated workflows that accelerate development cycles'
+    description: 'Automated workflows that accelerate development cycles',
+    color: 'from-secondary-violet to-purple-600',
+    accentColor: 'text-secondary-violet',
+    bgColor: 'bg-secondary-violet/10',
+    successStory: 'Automated CI/CD reduced deployment time from 3 hours to 15 minutes',
+    progress: 78
   }
 ];
 
@@ -90,19 +117,24 @@ export function ProblemOutcome() {
                       transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
                       whileHover={{ y: -4, scale: 1.02 }}
                     >
-                      <Card variant="glass" className="border-status-error/20 hover:border-status-error/40 transition-all duration-300 group">
+                      <Card variant="glass" className={`border-${problem.accentColor.replace('text-', '')}/20 hover:border-${problem.accentColor.replace('text-', '')}/40 transition-all duration-300 group`}>
                         <CardContent className="p-6">
                           <div className="flex items-start space-x-4">
-                            <div className="w-12 h-12 bg-gradient-to-r from-status-error/20 to-red-500/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                              <problem.icon className="w-6 h-6 text-status-error" />
+                            <div className={`w-12 h-12 bg-gradient-to-r ${problem.color} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                              <problem.icon className="w-6 h-6 text-white" />
                             </div>
                             <div className="flex-1">
-                              <h4 className="text-step-1 font-semibold text-white mb-2 group-hover:text-status-error transition-colors">
+                              <h4 className={`text-step-1 font-semibold text-white mb-2 group-hover:${problem.accentColor} transition-colors`}>
                                 {problem.title}
                               </h4>
-                              <p className="text-step-0 text-gray-400 leading-relaxed">
+                              <p className="text-step-0 text-gray-400 leading-relaxed mb-3">
                                 {problem.description}
                               </p>
+                              <div className={`p-3 rounded-lg ${problem.bgColor} border-l-4 border-${problem.accentColor.replace('text-', '')}/30`}>
+                                <p className="text-step--1 text-gray-300 italic">
+                                  "Example: {problem.example}"
+                                </p>
+                              </div>
                             </div>
                           </div>
                         </CardContent>
@@ -131,21 +163,44 @@ export function ProblemOutcome() {
                       transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                       whileHover={{ y: -4, scale: 1.02 }}
                     >
-                      <Card variant="glass" className="border-status-success/20 hover:border-status-success/40 transition-all duration-300 group">
+                      <Card variant="glass" className={`border-${outcome.accentColor.replace('text-', '')}/20 hover:border-${outcome.accentColor.replace('text-', '')}/40 transition-all duration-300 group`}>
                         <CardContent className="p-6">
                           <div className="text-center">
                             <div className="relative mb-4">
-                              <div className="text-step-4 font-bold text-status-success mb-1 group-hover:scale-110 transition-transform duration-300">
+                              <div className={`text-step-4 font-bold ${outcome.accentColor} mb-1 group-hover:scale-110 transition-transform duration-300`}>
                                 {outcome.metric}
                               </div>
-                              <div className="absolute -top-2 -right-2 w-4 h-4 bg-status-success/20 rounded-full animate-pulse" />
+                              <div className={`absolute -top-2 -right-2 w-4 h-4 ${outcome.bgColor} rounded-full animate-pulse`} />
                             </div>
                             <div className="text-step-1 font-semibold text-white mb-3">
                               {outcome.context}
                             </div>
-                            <p className="text-step-0 text-gray-400 leading-relaxed">
+                            <p className="text-step-0 text-gray-400 leading-relaxed mb-4">
                               {outcome.description}
                             </p>
+                            
+                            {/* Progress Bar */}
+                            <div className="mb-4">
+                              <div className="flex justify-between items-center mb-2">
+                                <span className="text-step--1 text-gray-400">Achievement</span>
+                                <span className={`text-step--1 font-medium ${outcome.accentColor}`}>{outcome.progress}%</span>
+                              </div>
+                              <div className="w-full bg-bg-800 rounded-full h-2">
+                                <motion.div
+                                  className={`h-2 bg-gradient-to-r ${outcome.color} rounded-full`}
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${outcome.progress}%` }}
+                                  transition={{ duration: 1, delay: 0.8 + index * 0.2 }}
+                                />
+                              </div>
+                            </div>
+                            
+                            {/* Success Story */}
+                            <div className={`p-3 rounded-lg ${outcome.bgColor} border-l-4 border-${outcome.accentColor.replace('text-', '')}/30`}>
+                              <p className="text-step--1 text-gray-300 italic">
+                                "Success: {outcome.successStory}"
+                              </p>
+                            </div>
                           </div>
                         </CardContent>
                       </Card>

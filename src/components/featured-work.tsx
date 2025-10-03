@@ -21,7 +21,14 @@ const featuredCases = [
     timeframe: '6 weeks',
     problem: 'Slow checkout process causing 40% cart abandonment',
     color: 'from-brand to-brand-700',
-    accentColor: 'text-brand'
+    accentColor: 'text-brand',
+    bgColor: 'bg-brand/10',
+    beforeAfter: {
+      before: { lcp: '5.2s', conversion: '2.1%', bounce: '68%' },
+      after: { lcp: '1.2s', conversion: '2.8%', bounce: '42%' }
+    },
+    approach: 'Optimized checkout flow, implemented edge caching, and redesigned UX for mobile-first experience',
+    techUsed: ['Next.js 15', 'Vercel Edge', 'Sanity CMS', 'Stripe', 'Tailwind CSS']
   },
   {
     client: 'MedConnect',
@@ -35,7 +42,14 @@ const featuredCases = [
     timeframe: '3 months',
     problem: 'Poor Core Web Vitals affecting patient portal usage',
     color: 'from-secondary-emerald to-green-600',
-    accentColor: 'text-secondary-emerald'
+    accentColor: 'text-secondary-emerald',
+    bgColor: 'bg-secondary-emerald/10',
+    beforeAfter: {
+      before: { lcp: '4.8s', engagement: '23%', retention: '45%' },
+      after: { lcp: '1.8s', engagement: '39%', retention: '78%' }
+    },
+    approach: 'Redesigned patient portal with offline-first architecture and real-time notifications',
+    techUsed: ['React Native', 'AWS Amplify', 'Firebase', 'GraphQL', 'Offline Sync']
   }
 ];
 
@@ -92,6 +106,29 @@ export function FeaturedWork() {
                       </p>
                     </div>
                     
+                    {/* Before/After Visualization */}
+                    <div className="mb-6 p-4 rounded-lg bg-bg-800/30 border border-gray-700/50">
+                      <h4 className="text-step--1 font-medium text-white mb-3 text-center">Performance Comparison</h4>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="text-center">
+                          <div className="text-step--2 text-gray-400 mb-2">Before</div>
+                          <div className="space-y-1">
+                            <div className="text-step--1 text-status-error">LCP: {caseStudy.beforeAfter.before.lcp}</div>
+                            <div className="text-step--1 text-status-error">Conversion: {caseStudy.beforeAfter.before.conversion}</div>
+                            <div className="text-step--1 text-status-error">Bounce: {caseStudy.beforeAfter.before.bounce}</div>
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-step--2 text-gray-400 mb-2">After</div>
+                          <div className="space-y-1">
+                            <div className="text-step--1 text-status-success">LCP: {caseStudy.beforeAfter.after.lcp}</div>
+                            <div className="text-step--1 text-status-success">Conversion: {caseStudy.beforeAfter.after.conversion}</div>
+                            <div className="text-step--1 text-status-success">Bounce: {caseStudy.beforeAfter.after.bounce}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
                     <div className="text-center mb-6">
                       <motion.div 
                         className={`text-step-4 font-bold ${caseStudy.accentColor} mb-2`}
@@ -110,15 +147,23 @@ export function FeaturedWork() {
                   </CardHeader>
                 
                 <CardContent className="space-y-6">
+                  {/* Approach */}
+                  <div className={`p-3 rounded-lg ${caseStudy.bgColor} border-l-4 border-${caseStudy.accentColor.replace('text-', '')}/30`}>
+                    <h4 className="text-step--1 font-medium text-white mb-2">Our Approach:</h4>
+                    <p className="text-step--1 text-gray-300">
+                      {caseStudy.approach}
+                    </p>
+                  </div>
+                  
                   <div>
                     <h4 className="text-step--1 font-medium text-white mb-3">
-                      Tech Stack:
+                      Technologies Used:
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      {caseStudy.stack.map((tech, techIndex) => (
+                      {caseStudy.techUsed.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="px-2 py-1 bg-bg-800 text-step--1 text-gray-300 rounded"
+                          className="px-3 py-1 bg-bg-800 text-step--1 text-gray-300 rounded-full border border-gray-700/50 hover:border-brand/40 transition-colors"
                         >
                           {tech}
                         </span>
@@ -126,12 +171,17 @@ export function FeaturedWork() {
                     </div>
                   </div>
 
-                  <Link href={caseStudy.link}>
-                    <Button variant="primary" size="sm" className="w-full group">
-                      View case
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <div className="flex gap-3">
+                    <Link href={caseStudy.link} className="flex-1">
+                      <Button variant="primary" size="sm" className="w-full group">
+                        View full case
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                    <Button variant="ghost" size="sm" className="group">
+                      <span className="text-step--1">Download PDF</span>
                     </Button>
-                  </Link>
+                  </div>
                 </CardContent>
               </Card>
               </motion.div>

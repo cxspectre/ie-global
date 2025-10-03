@@ -21,7 +21,13 @@ const services = [
     bgColor: 'bg-brand/10',
     description: 'High-performance web applications that load in under 1 second and convert 20-40% better than traditional sites.',
     timeframe: '4-12 weeks',
-    deliverables: ['Custom design system', 'Performance optimization', 'SEO foundation', 'Analytics setup']
+    deliverables: ['Custom design system', 'Performance optimization', 'SEO foundation', 'Analytics setup'],
+    microCase: {
+      client: 'TechCorp',
+      metric: '+31%',
+      metricLabel: 'signup rate',
+      timeframe: '6 weeks'
+    }
   },
   {
     icon: Smartphone,
@@ -34,7 +40,13 @@ const services = [
     bgColor: 'bg-secondary-coral/10',
     description: 'Native and cross-platform mobile apps with offline capabilities and seamless user experiences.',
     timeframe: '8-16 weeks',
-    deliverables: ['App store deployment', 'Push notifications', 'Offline sync', 'Performance monitoring']
+    deliverables: ['App store deployment', 'Push notifications', 'Offline sync', 'Performance monitoring'],
+    microCase: {
+      client: 'MedConnect',
+      metric: '+70%',
+      metricLabel: 'patient engagement',
+      timeframe: '3 months'
+    }
   },
   {
     icon: Shield,
@@ -47,7 +59,13 @@ const services = [
     bgColor: 'bg-secondary-emerald/10',
     description: 'Enterprise-grade device management and security solutions with automated deployment workflows.',
     timeframe: '2-6 weeks',
-    deliverables: ['Device enrollment', 'Security policies', 'App deployment', 'Compliance reporting']
+    deliverables: ['Device enrollment', 'Security policies', 'App deployment', 'Compliance reporting'],
+    microCase: {
+      client: 'Enterprise Corp',
+      metric: '-75%',
+      metricLabel: 'setup time',
+      timeframe: '2 weeks'
+    }
   },
   {
     icon: Server,
@@ -60,7 +78,13 @@ const services = [
     bgColor: 'bg-secondary-amber/10',
     description: 'Reliable hosting infrastructure with proactive monitoring and automated scaling capabilities.',
     timeframe: 'Ongoing',
-    deliverables: ['Infrastructure setup', 'Monitoring dashboard', 'Backup strategy', 'Performance optimization']
+    deliverables: ['Infrastructure setup', 'Monitoring dashboard', 'Backup strategy', 'Performance optimization'],
+    microCase: {
+      client: 'Global Corp',
+      metric: '99.9%',
+      metricLabel: 'uptime SLA',
+      timeframe: '12 months'
+    }
   }
 ];
 
@@ -110,18 +134,37 @@ export function ServicesSnapshot() {
                 >
                   <Card variant="glass" className="h-full cursor-pointer group hover:border-brand/40 transition-all duration-300">
                     <CardHeader>
-                      <motion.div 
-                        className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                        whileHover={{ rotate: 5 }}
-                      >
-                        <service.icon className="w-6 h-6 text-white" />
-                      </motion.div>
-                      <CardTitle className="text-step-2 group-hover:text-brand transition-colors">
+                      <div className="flex items-start justify-between mb-4">
+                        <motion.div 
+                          className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}
+                          whileHover={{ rotate: 5 }}
+                        >
+                          <service.icon className="w-6 h-6 text-white" />
+                        </motion.div>
+                        
+                        {/* Micro-case metric badge */}
+                        <div className={`text-right ${service.bgColor} rounded-lg px-3 py-2 border border-${service.accentColor.replace('text-', '')}/20`}>
+                          <div className={`text-step-1 font-bold ${service.accentColor}`}>
+                            {service.microCase.metric}
+                          </div>
+                          <div className="text-step--2 text-gray-400">
+                            {service.microCase.metricLabel}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <CardTitle className="text-step-2 group-hover:text-brand transition-colors mb-2">
                         {service.title}
                       </CardTitle>
-                      <CardDescription className="text-step-0">
+                      <CardDescription className="text-step-0 mb-3">
                         {service.tagline}
                       </CardDescription>
+                      
+                      {/* Time to value */}
+                      <div className="flex items-center space-x-2 text-step--1 text-gray-400 mb-4">
+                        <Clock className="w-4 h-4" />
+                        <span>Launch in {service.timeframe}</span>
+                      </div>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <ul className="space-y-2">
@@ -163,9 +206,15 @@ export function ServicesSnapshot() {
                                   {service.description}
                                 </p>
                                 
-                                <div className="flex items-center space-x-2 text-step--1 text-gray-400">
-                                  <Clock className="w-4 h-4" />
-                                  <span>Timeline: {service.timeframe}</span>
+                                {/* Micro-case story */}
+                                <div className={`p-3 rounded-lg ${service.bgColor} border-l-4 border-${service.accentColor.replace('text-', '')}/30`}>
+                                  <div className="flex items-center space-x-2 mb-2">
+                                    <TrendingUp className={`w-4 h-4 ${service.accentColor}`} />
+                                    <span className="text-step--1 font-medium text-white">Success Story</span>
+                                  </div>
+                                  <p className="text-step--1 text-gray-300 italic">
+                                    "For {service.microCase.client} we achieved {service.microCase.metric} {service.microCase.metricLabel} in {service.microCase.timeframe}"
+                                  </p>
                                 </div>
                                 
                                 <div>
